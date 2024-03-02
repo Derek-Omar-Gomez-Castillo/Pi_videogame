@@ -1,19 +1,19 @@
 import pygame as pg, sys
-
+import PI_Funciones
 class Player(pg.sprite.Sprite):
     def __init__(self, width, heigth, position_x, position_y, color):
         super().__init__()
         self.image = pg.Surface([width, heigth])
         self.image.fill(color)
-        self.rect = self.image.get_rect
-        
+        self.rect = self.image.get_rect()
+
 
 pg.init
 
 clock = pg.time.Clock()
 
-screen_width = 800
-screen_height = 800
+screen_width = 1366
+screen_height = 768
 screen = pg.display.set_mode( (screen_width, screen_height) )
 
 player = Player(50, 50, 100, 100,(255, 255, 255))
@@ -26,6 +26,7 @@ while True:
         if event.type == pg.QUIT:
             pg.quit()
             sys.exit()
+        
 
     pg.display.flip()
     player_group.draw(screen)
