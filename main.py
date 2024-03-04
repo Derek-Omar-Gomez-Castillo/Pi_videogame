@@ -13,21 +13,28 @@ class Player(Sprite):
 
 class Game_state():
     def __init__(self) :
-        self.state = 'Montecarlo'
+        self.state = 'Intro'
 
     def Intro(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
-            if event.type == pg.MOUSEBUTTONDOWN:
-                self.state = 'Montecarlo'
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_1:
+                    self.state = 'Intro'
+                if event.key == pg.K_2:
+                    self.state = 'Montecarlo'
+                if event.key == pg.K_3:
+                    self.state = 'Basilea'
+                if event.key == pg.K_4:
+                    self.state = 'Poligonos_regulares'
 
         screen.blit(background_Intro, (0, 0))
-        #refactorizar
-        #player_group.draw(screen)
-        #player_group.update()
-        
+        screen.blit(text1, (center_x+200, center_y-10))
+        screen.blit(text2, (center_x+200, center_y+20))        
+        screen.blit(text3, (center_x+200, center_y+50))        
+        screen.blit(text4, (center_x+200, center_y+80))
         pg.display.flip()
 
     def Montecarlo(self):
@@ -35,22 +42,56 @@ class Game_state():
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
-        
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_1:
+                    self.state = 'Intro'
+                if event.key == pg.K_2:
+                    self.state = 'Montecarlo'
+                if event.key == pg.K_3:
+                    self.state = 'Basilea'
+                if event.key == pg.K_4:
+                    self.state = 'Poligonos_regulares'
+        screen.blit(space_background, (0, 0))
         screen.blit(heart_surface, (600, 300))
         screen.blit(Tierra_image, (600, 300))
         pg.display.flip()
 
-    def Basilea():
-        pass
+    def Basilea(self):
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_1:
+                    self.state = 'Intro'
+                if event.key == pg.K_2:
+                    self.state = 'Montecarlo'
+                if event.key == pg.K_3:
+                    self.state = 'Basilea'
+                if event.key == pg.K_4:
+                    self.state = 'Poligonos_regulares'
+        screen.blit(background_Intro, (0, 0))
+        pg.display.flip()
 
-    def Poligonos_regulares():
-        pass
-    
+    def Poligonos_regulares(self):
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_1:
+                    self.state = 'Intro'
+                if event.key == pg.K_2:
+                    self.state = 'Montecarlo'
+                if event.key == pg.K_3:
+                    self.state = 'Basilea'
+                if event.key == pg.K_4:
+                    self.state = 'Poligonos_regulares'
+        screen.blit(background_Intro, (0, 0))
+        pg.display.flip()
     def State_manager(self):
-        if self.state == 'Intro':
-            self.Intro()
-        if self.state == 'Montecarlo':
-            self.Montecarlo()
+        self.dict_states = {'Intro': self.Intro, 'Montecarlo': self.Montecarlo, 'Basilea': self.Basilea, 'Poligonos_regulares': self.Poligonos_regulares}
+        self.dict_states[self.state]()
 
 
 pg.init
@@ -71,6 +112,17 @@ player_group.add(player)
 game_state = Game_state()
 heart_surface = pg.Surface([100,100])
 heart_surface.fill((255,255,255))
+space_background = pg.image.load("assets/Space Background (1).png")
+pg.font.init()
+font = pg.font.Font(None, 36)
+# Renderiza el texto en una superficie
+text1 = font.render('Oprime 1 para el Menú de inicio', True, (255, 255, 255))
+text2 = font.render('2 para el método de Montecarlo', True, (255, 255, 255))
+text3 = font.render('3 para el método de basilea ', True, (255, 255, 255))
+text4 = font.render('4 para el método de poligonos regulares', True, (255, 255, 255))
+center_x = (screen_width - 1592) // 2
+center_y = (screen_height - 26) // 2
+# Dibuja el texto en el centro de la pantalla
 
 while True:
     game_state.State_manager()
