@@ -52,8 +52,8 @@ class Game_state():
                 if event.key == pg.K_4:
                     self.state = 'Poligonos_regulares'
         screen.blit(space_background, (0, 0))
-        screen.blit(heart_surface, (600, 300))
-        screen.blit(Tierra_image, (600, 300))
+        #screen.blit(heart_surface, (450, 50))
+        screen.blit(Tierra_image, (450, 50))
         pg.display.flip()
 
     def Basilea(self):
@@ -87,8 +87,9 @@ class Game_state():
                     self.state = 'Basilea'
                 if event.key == pg.K_4:
                     self.state = 'Poligonos_regulares'
-        screen.blit(background_Intro, (0, 0))
+        screen.fill(Background_color)
         pg.display.flip()
+
     def State_manager(self):
         self.dict_states = {'Intro': self.Intro, 'Montecarlo': self.Montecarlo, 'Basilea': self.Basilea, 'Poligonos_regulares': self.Poligonos_regulares}
         self.dict_states[self.state]()
@@ -102,27 +103,30 @@ screen_width = 1360
 screen_height = 768
 screen = pg.display.set_mode( (screen_width, screen_height) )
 pg.display.set_caption("Las aventuras de Pi")
+pg.font.init()
 #pg.mouse.set_visible(False)
 
-background_Intro = pg.image.load("assets/city.png")
-Tierra_image = pg.image.load("assets/Tierra_image.png")
+#Classes
 player = Player("assets/player/Bot Wheel/charge.png")
 player_group = pg.sprite.Group()
 player_group.add(player)
 game_state = Game_state()
-heart_surface = pg.Surface([100,100])
-heart_surface.fill((255,255,255))
+#images
+background_Intro = pg.image.load("assets/city.png")
+Tierra_image = pg.image.load("assets/Tierra_image.png")
+Tierra_image = pg.transform.scale(Tierra_image, (500, 500))
+heart_surface = pg.Surface([500,500])
+heart_surface.fill((218,65,103))
 space_background = pg.image.load("assets/Space Background (1).png")
-pg.font.init()
+#fonts
 font = pg.font.Font(None, 36)
-# Renderiza el texto en una superficie
 text1 = font.render('Oprime 1 para el Menú de inicio', True, (255, 255, 255))
 text2 = font.render('2 para el método de Montecarlo', True, (255, 255, 255))
 text3 = font.render('3 para el método de basilea ', True, (255, 255, 255))
 text4 = font.render('4 para el método de poligonos regulares', True, (255, 255, 255))
-center_x = (screen_width - 1592) // 2
+center_x = (screen_width - 1000) // 2
 center_y = (screen_height - 26) // 2
-# Dibuja el texto en el centro de la pantalla
+Background_color = (11,24,43)
 
 while True:
     game_state.State_manager()

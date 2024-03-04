@@ -8,8 +8,7 @@ def metodo_poligonos(numero_lados_poligonos):
 
     num_lados = 4;     # Número de lados de los polígonos con los que estamos trabajando.
 
-    while num_lados * 2 <= num_lados_poligono :  # BUCLE. Si el número de lados del polígono a generar supera el número impuesto por el usuario, para.
-            
+    while num_lados * 2 <= num_lados_poligono :  # BUCLE. Si el número de lados del polígono a generar supera el número impuesto por el usuario, para.   
         perimetro_circunscrito = (2 * perimetro_inscrito * perimetro_circunscrito) / (perimetro_inscrito + perimetro_circunscrito);      # Cálculo de los perímetros con el doble de lados. A cada vuelta los valores de perimetro_inscrito y perimetro_circunscrito se sobreescriben.
         perimetro_inscrito = math.sqrt(perimetro_inscrito * perimetro_circunscrito);        
         num_lados *= 2;              # El número de lados se duplica en cada vuelta.int diametro = num_lados;
@@ -22,7 +21,7 @@ def metodo_poligonos(numero_lados_poligonos):
     print("Dicho de otra manera, el valor de pi se encuentra entre")
     print(pi + error,  "   y   ", pi - error )
 
-def metodo_monte_carlo(numero_de_puntos_cuadrado):
+def metodo_montecarlo(numero_de_puntos_cuadrado):
     num_puntos_circulo = 0
     radio_circunferencia = 1
     for i in range(numero_de_puntos_cuadrado):
