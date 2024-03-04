@@ -1,11 +1,14 @@
+
 import pygame
 import math
 import random
+
+
 # Inicializar Pygame
 pygame.init()
 
 # Definir colores
-Background_color = (11,24,43)
+Background_color_poligonos = (11,24,43)
 Azul_fuerte = (57,82,170)
 Azul_claro = (57,116,178)
 
@@ -35,7 +38,7 @@ while ejecutando:
             ejecutando = False
 
     # Limpiar la pantalla
-    pantalla.fill(Background_color)
+    pantalla.fill(Background_color_poligonos)
 
     # Dibujar polígono regular en el centro de la pantalla
     centro_poligono = (ANCHO // 2, ALTO // 2)

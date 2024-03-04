@@ -19,6 +19,8 @@ def metodo_poligonos(numero_lados_poligonos):
     pi = (perimetro_inscrito / 2 / radio_circunferencia + perimetro_circunscrito / 2 / radio_circunferencia) / 2;         # Calculamos pi como la media de los valores de pi de cada perímetro...
     error = (perimetro_inscrito / 2 / radio_circunferencia - perimetro_circunscrito / 2 / radio_circunferencia) / 2;   # ... y el error como la resta.
 
+    return pi
+
     print("Con un polígono de ", num_lados, " lados, obtenemos:")
     print("Pi = ", pi, "  +/-  ", error)
     print("Dicho de otra manera, el valor de pi se encuentra entre")
@@ -33,6 +35,7 @@ def metodo_montecarlo(numero_de_puntos_cuadrado):
         if x**2 + y**2 <= radio_circunferencia**2:
             num_puntos_circulo += 1
     pi = 4 * num_puntos_circulo / numero_de_puntos_cuadrado
+    return pi
     print("Con ", numero_de_puntos_cuadrado, " puntos, obtenemos:")
     print("Pi = ", pi, "\n")
     
@@ -49,9 +52,5 @@ def metodo_basilea(numero_de_terminos):
         suma_inversos_positivos_al_cuadrado += numero
     pi = math.sqrt(6 * suma_inversos_positivos_al_cuadrado)
     print("Con ", numero_de_terminos, " términos, obtenemos:", pi)
-def foo():
-    metodo_poligonos(1000)
-    metodo_montecarlo(50)
-    metodo_basilea(100000)
 
-foo()
+    return pi
