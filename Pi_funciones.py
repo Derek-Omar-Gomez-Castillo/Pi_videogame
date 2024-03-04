@@ -1,4 +1,7 @@
 import math, random
+
+#pi = None
+
 def metodo_poligonos(numero_lados_poligonos):
     num_lados_poligono = numero_lados_poligonos  # Número de lados del polígono
     radio_circunferencia = 1  # Este es el radio de la circunferencia; el valor de pi no se ve afectado.
@@ -19,7 +22,7 @@ def metodo_poligonos(numero_lados_poligonos):
     print("Con un polígono de ", num_lados, " lados, obtenemos:")
     print("Pi = ", pi, "  +/-  ", error)
     print("Dicho de otra manera, el valor de pi se encuentra entre")
-    print(pi + error,  "   y   ", pi - error )
+    print(pi + error,  "   y   ", pi - error, "\n")
 
 def metodo_montecarlo(numero_de_puntos_cuadrado):
     num_puntos_circulo = 0
@@ -31,7 +34,7 @@ def metodo_montecarlo(numero_de_puntos_cuadrado):
             num_puntos_circulo += 1
     pi = 4 * num_puntos_circulo / numero_de_puntos_cuadrado
     print("Con ", numero_de_puntos_cuadrado, " puntos, obtenemos:")
-    print("Pi = ", pi)
+    print("Pi = ", pi, "\n")
     
 
 def metodo_basilea(numero_de_terminos):
@@ -45,3 +48,10 @@ def metodo_basilea(numero_de_terminos):
     for numero in valores_fracciones:
         suma_inversos_positivos_al_cuadrado += numero
     pi = math.sqrt(6 * suma_inversos_positivos_al_cuadrado)
+    print("Con ", numero_de_terminos, " términos, obtenemos:", pi)
+def foo():
+    metodo_poligonos(1000)
+    metodo_montecarlo(50)
+    metodo_basilea(100000)
+
+foo()
