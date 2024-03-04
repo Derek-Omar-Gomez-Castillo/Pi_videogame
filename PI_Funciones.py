@@ -22,16 +22,16 @@ def metodo_poligonos(numero_lados_poligonos):
     print("Dicho de otra manera, el valor de pi se encuentra entre")
     print(pi + error,  "   y   ", pi - error )
 
-def metodo_monte_carlo(numero_de_puntos):
+def metodo_monte_carlo(numero_de_puntos_cuadrado):
     num_puntos_circulo = 0
     radio_circunferencia = 1
-    for i in range(numero_de_puntos):
+    for i in range(numero_de_puntos_cuadrado):
         x = random.uniform(-1, 1)
         y = random.uniform(-1, 1)
         if x**2 + y**2 <= radio_circunferencia**2:
             num_puntos_circulo += 1
-    pi = 4 * num_puntos_circulo / numero_de_puntos
-    print("Con ", numero_de_puntos, " puntos, obtenemos:")
+    pi = 4 * num_puntos_circulo / numero_de_puntos_cuadrado
+    print("Con ", numero_de_puntos_cuadrado, " puntos, obtenemos:")
     print("Pi = ", pi)
     
 
