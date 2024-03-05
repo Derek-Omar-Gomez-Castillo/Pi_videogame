@@ -1,3 +1,0 @@
-CREDITS:
-ColorAplha
-Penusbmic
